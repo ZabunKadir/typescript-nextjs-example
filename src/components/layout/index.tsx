@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
-import Header from "../header";
+import FooterComponent from "../footer";
+import HeaderComponent from "../header";
 
 interface ILayout {
   children: ReactNode;
@@ -8,8 +9,9 @@ interface ILayout {
 const Layout: FC<ILayout> = ({ children }) => {
   return (
     <>
-      <Header />
-      {children}
+      <HeaderComponent />
+      <main>{children}</main>
+      <FooterComponent />
     </>
   );
 };
