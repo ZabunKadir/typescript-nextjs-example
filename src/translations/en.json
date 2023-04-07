@@ -1,4 +1,9 @@
 {
+  "home.title": "Home",
+  "home.description": "Websiteme hoş geldiniz!",
+  "header.links.home": "Anasayfa",
+  "header.links.about": "Hakkımda",
+  "footer.copy": "© 2023 Benim Web Sitem. Tüm Hakları Saklıdır.",
   "title-1": "Our Purpose And Goal",
   "title-2": "Corporate",
   "title-3": "Services",

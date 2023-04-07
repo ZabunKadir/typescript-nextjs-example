@@ -5,21 +5,19 @@ import { FC } from "react";
 import { IntlProvider } from "react-intl";
 import enMessages from "../translations/en.json";
 import trMessages from "../translations/tr.json";
-
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
-  const { locale = "tr", defaultLocale, asPath } = useRouter();
-  const messages = {
-    en: enMessages,
-    tr: trMessages,
-  };
+  const { locale = navigator.language, defaultLocale, asPath } = useRouter();
 
   return (
     <IntlProvider
       locale={locale}
       defaultLocale={defaultLocale}
-      messages={messages[locale]}
+      messages={locale === "en" ? enMessages : trMessages}
     >
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </IntlProvider>
   );
 };
