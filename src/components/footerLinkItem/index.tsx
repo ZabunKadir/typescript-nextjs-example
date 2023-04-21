@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { FC } from "react";
+import { useIntl } from "react-intl";
 
 interface IFooterElement {
   label: string;
@@ -8,10 +9,12 @@ interface IFooterElement {
 }
 
 const FooterLinkItem: FC<IFooterElement> = ({ icon, href, label }) => {
+  const intl = useIntl();
+
   return (
-    <div className="flex">
+    <div className="flex hover:underline">
       {icon}
-      <Link href={href}>{label}</Link>
+      <Link href={href}>{intl.formatMessage({ id: label })}</Link>
     </div>
   );
 };

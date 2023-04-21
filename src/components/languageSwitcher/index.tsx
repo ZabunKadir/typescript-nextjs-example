@@ -1,12 +1,26 @@
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import classNames from "classnames";
+import ImageComponent from "../imageComponent";
+import useDropdownMenuScroll from "../dropdownController";
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({
+  additionalClass = "",
+  dropdownClass = "",
+}: {
+  additionalClass?: string;
+  dropdownClass?: string;
+}) => {
   const router = useRouter();
-  const [dropdownActive, setDropdownActive] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const languages = [
-    { label: "TR", value: "tr", iconSrc: "", iconAlt: "Turkey flag" },
+    {
+      label: "TR",
+      value: "tr",
+      iconSrc: "./images/trFlag.svg",
+      iconAlt: "Turkey flag",
+    },
     {
       label: "EN",
       value: "en",
@@ -16,27 +30,37 @@ const LanguageSwitcher = () => {
   ];
 
   return (
-    <div className="flex relative">
+    <div className={classNames("flex relative items-center", additionalClass)}>
       <div
-        className="flex px-2 py-1 rounded-xl border-2 border-gray-50 hover:cursor-pointer hover:bg-gray-100"
-        onClick={() => setDropdownActive(!dropdownActive)}
+        className="flex w-max flex-col p-1 h-max rounded-lg border-2 border-gray-200 hover:cursor-pointer hover:bg-gray-200 text-primary-main bg-gray-100"
+        onClick={() => setIsOpen(!isOpen)}
       >
-        <div className="flex items-center justify-between space-x-2">
-          <img
-            className="w-6 h-6"
-            src={router.locale === "en" ? "./images/enFlag.svg" : ""}
+        <div className="flex w-full items-center justify-between space-x-2">
+          <ImageComponent
+            width={24}
+            height={24}
+            alt={"Flags picker"}
+            src={
+              router.locale === "en"
+                ? "./images/enFlag.svg"
+                : "./images/trFlag.svg"
+            }
           />
-          <span className="text-body">{router.locale?.toUpperCase()}</span>
+          <span className=" text-normal">{router.locale?.toUpperCase()}</span>
         </div>
-        {dropdownActive && (
+        {isOpen && (
           <div
-            className="flex inset-0 min-h-[48px] flex-col w-full absolute mt-8 bg-white border border-gray-200 rounded-lg overflow-hidden"
-            onPointerLeave={() => setDropdownActive(false)}
+            className={classNames(
+              "flex top-10 left-0 right-0 h-min flex-col w-full max-w-max absolute bg-white border border-gray-200 rounded-lg",
+              dropdownClass
+            )}
           >
             {languages.map((item, index) => (
               <button
                 key={index}
-                className="flex w-full justify-center px-2 space-x-2 hover:bg-gray-100"
+                className={
+                  "flex w-full justify-center px-2 py-1 space-x-2 hover:bg-gray-200 rounded-lg"
+                }
                 onClick={() =>
                   router.push(router.pathname, router.asPath, {
                     locale: item.value,

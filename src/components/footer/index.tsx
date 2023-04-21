@@ -1,16 +1,97 @@
-import Link from "next/link";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useIntl } from "react-intl";
 import FooterElement from "../footerElement";
+import FooterLinkItem from "../footerLinkItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPhone,
+  faEnvelope,
+  faLocationPin,
+} from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
+const footerItems = {
+  corporate: {
+    title: "footer.title-2",
+    items: [
+      { icon: "", href: "/", label: "footer.link-1" },
+      { icon: "", href: "/", label: "footer.link-2" },
+      { icon: "", href: "/", label: "footer.link-3" },
+      { icon: "", href: "/", label: "footer.link-4" },
+    ],
+  },
+  services: {
+    title: "footer.title-3",
+    items: [
+      { icon: "", href: "/", label: "footer.link-1" },
+      { icon: "", href: "/", label: "footer.link-2" },
+      { icon: "", href: "/", label: "footer.link-3" },
+      { icon: "", href: "/", label: "footer.link-4" },
+    ],
+  },
+};
 const FooterComponent: FC = () => {
   const intl = useIntl();
 
   return (
-    <footer className="flex w-full h-12 border-b border-gray-900">
+    <footer className="flex flex-col p-6 space-y-4 tablet:flex-row tablet:space-x-6 tablet:space-y-0 justify-around w-full border-t border-gray-900">
       <FooterElement
-        title={intl.formatMessage({ id: "title-1" })}
-        item={<span>{intl.formatMessage({ id: "label-1" })}</span>}
+        title={intl.formatMessage({ id: "footer.title-1" })}
+        item={
+          <span className="text-center w-full text-normal">
+            {intl.formatMessage({ id: "footer.purpose-1" })}
+          </span>
+        }
+      />
+      {Object.values(footerItems).map((item, index) => (
+        <FooterElement
+          key={index}
+          title={intl.formatMessage({ id: item.title })}
+          item={item.items.map((linkItem, index) => (
+            <FooterLinkItem key={index} {...linkItem} />
+          ))}
+        />
+      ))}
+      <FooterElement
+        title={intl.formatMessage({ id: "footer.title-4" })}
+        item={
+          <div className="flex flex-col space-y-4 w-max">
+            <Link
+              className="flex items-center"
+              href={`tel:${"0544 444 44 44"}`}
+            >
+              <FontAwesomeIcon
+                className="flex w-4 h-4 text-primary-main mr-3"
+                icon={faPhone}
+              />
+              0544 444 44 44
+            </Link>
+
+            <Link
+              className="flex items-center "
+              href={`mailto:${"info@examples.com"}`}
+            >
+              <FontAwesomeIcon
+                className="flex w-4 h-4 text-primary-main mr-3"
+                icon={faEnvelope}
+              />
+              info@examples.com
+            </Link>
+
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center"
+              href={"https://www.google.com/maps/place/Bal%C4%B1kesir"}
+            >
+              <FontAwesomeIcon
+                className="flex w-3 h-3 text-primary-main mr-3"
+                icon={faLocationPin}
+              />
+              Example location in Turkey
+            </Link>
+          </div>
+        }
       />
     </footer>
   );

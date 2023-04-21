@@ -4,7 +4,7 @@ const ToggleSwitch = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   return (
-    <label className="relative inline-flex items-center cursor-pointer">
+    <label className="relative inline-flex w-11 h-6 cursor-pointer">
       <input
         type="checkbox"
         checked={isActive}
