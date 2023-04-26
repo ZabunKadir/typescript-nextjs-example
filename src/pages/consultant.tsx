@@ -9,20 +9,20 @@ import { useIntl } from "react-intl";
 //variables
 const consultantItems = [
   {
-    title: "consultant.news.title-1",
-    text: "consultant.news.text-1",
+    title: "consultant.title-1",
+    text: "consultant.text-1",
 
     imgSrc: "/images/emptyImage.jpg",
   },
   {
-    title: "consultant.news.title-2",
-    text: "consultant.news.text-2",
+    title: "consultant.title-2",
+    text: "consultant.text-2",
 
     imgSrc: "/images/emptyImage.jpg",
   },
   {
-    title: "consultant.news.title-3",
-    text: "consultant.news.text-3",
+    title: "consultant.title-3",
+    text: "consultant.text-3",
 
     imgSrc: "/images/emptyImage.jpg",
   },

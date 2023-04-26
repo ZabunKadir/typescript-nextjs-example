@@ -37,7 +37,7 @@ const NewsItem = ({
       </div>
       <div className="flex w-full flex-col justify-center space-y-4">
         <span className="text-center text-title-medium uppercase font-medium">
-          {title}
+          {intl.formatMessage({ id: title })}
         </span>
         <span className="text-center w-full text-title-small max-w-[320px] h-full max-h-[100px] line-clamp-3 break-words">
           {text}

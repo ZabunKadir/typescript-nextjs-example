@@ -9,15 +9,15 @@ import { useIntl } from "react-intl";
 //variables
 const answerItems = [
   {
-    title: "answers.news.title-1",
+    title: "answers.title-1",
     imgSrc: "/images/emptyImage.jpg",
   },
   {
-    title: "answers.news.title-2",
+    title: "answers.title-2",
     imgSrc: "/images/emptyImage.jpg",
   },
   {
-    title: "answers.news.title-3",
+    title: "answers.title-3",
     imgSrc: "/images/emptyImage.jpg",
   },
 ];
