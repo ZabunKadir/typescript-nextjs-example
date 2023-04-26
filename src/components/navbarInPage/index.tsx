@@ -1,13 +1,10 @@
 //utils
-import {
-  faChevronRight,
-  faEye,
-  faMinus,
-  faSquareMinus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import React, { FC, useState } from "react";
+import { useIntl } from "react-intl";
+import { motion } from "framer-motion";
 
 interface INavbarItem {
   text: string;
@@ -21,6 +18,26 @@ interface INavbarInPage {
   items: INavbarItem[];
 }
 
+//framer motion config
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const linkItem = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
 const NavbarInPage: FC<INavbarInPage> = ({
   title,
   activePage,
@@ -28,8 +45,14 @@ const NavbarInPage: FC<INavbarInPage> = ({
   items,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
+  const intl = useIntl();
   return (
-    <div className="flex w-full h-max flex-col items-center border tablet:max-w-max rounded-lg overflow-hidden border-gray-400 hover:shadow-md hover:shadow-primary-mid duration-300">
+    <motion.div
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className="flex w-full h-max flex-col items-center border tablet:max-w-max rounded-lg overflow-hidden border-gray-400 hover:shadow-md hover:shadow-primary-mid duration-300"
+    >
       <div className="flex w-full px-4 items-center">
         <span className="w-full text-title-medium font-bold p-4 text-center text-primary-main">
           {title}
@@ -47,21 +70,24 @@ const NavbarInPage: FC<INavbarInPage> = ({
       </div>
       {isOpen &&
         items?.map((item, index) => (
-          <button
+          <motion.button
+            variants={linkItem}
             key={index}
             onClick={() => activePageAction(item.pageValue)}
             className={classNames(
-              "flex items-center justify-center w-full p-4 border-t border-gray-400 duration-300 text-gray-800",
+              "flex items-center  w-full p-4 border-t border-gray-400 duration-300 text-gray-800 min-w-[240px]",
               activePage === item.pageValue
                 ? "bg-warning text-primary-main"
                 : "hover:bg-primary-main hover:text-white"
             )}
           >
             <FontAwesomeIcon icon={faChevronRight} className="mr-2" />
-            <span className="text-title-small font-medium">{item.text}</span>
-          </button>
+            <span className="text-title-small font-medium">
+              {intl.formatMessage({ id: item.text })}
+            </span>
+          </motion.button>
         ))}
-    </div>
+    </motion.div>
   );
 };
 

@@ -14,10 +14,10 @@ const footerItems = {
   services: {
     title: "footer.title-3",
     items: [
-      { href: "/products", label: "footer.link-1" },
-      { href: "/defense-industry-products", label: "footer.link-2" },
-      { href: "/consultant", label: "footer.link-3" },
-      { href: "/answers", label: "footer.link-4" },
+      { href: "/products", label: "footer.link-5" },
+      { href: "/defense-industry-products", label: "footer.link-6" },
+      { href: "/consultant", label: "footer.link-7" },
+      { href: "/solutions", label: "footer.link-8" },
     ],
   },
 };

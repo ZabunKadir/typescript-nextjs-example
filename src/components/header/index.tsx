@@ -2,6 +2,8 @@ import { FC, useState } from "react";
 //components
 import NavItem from "../navItem";
 import LanguageSwitcher from "../languageSwitcher";
+import ImageComponent from "../imageComponent";
+
 //utils
 import Link from "next/link";
 import { FormattedMessage } from "react-intl";
@@ -28,7 +30,7 @@ const navItems = [
   { text: "header.links-3", icon: null, href: "/products" },
   { text: "header.links-4", icon: null, href: "/defense-industry-products" },
   { text: "header.links-5", icon: null, href: "/consultant" },
-  { text: "header.links-6", icon: null, href: "/answers" },
+  { text: "header.links-6", icon: null, href: "/solutions" },
   { text: "header.links-7", icon: null, href: "/contact" },
 ];
 
@@ -46,10 +48,16 @@ const HeaderComponent: FC<IHeader> = ({
         <div className="flex w-full desktop:max-w-[78%] items-center">
           <div className="flex justify-between w-full text-primary-main ">
             <Link
-              className="flex w-max items-center px-6 bg-white text-h4"
+              className="flex w-max items-center p-4 rounded-lg hover:shadow-md hover:shadow-gray-500 bg-white text-h4"
               href={"/"}
             >
-              Logo
+              <ImageComponent
+                src="/images/logo.svg"
+                width={156}
+                height={96}
+                alt="Logo"
+                className="object-contain"
+              />
             </Link>
             <button
               onClick={() => setIsMenuActive(true)}

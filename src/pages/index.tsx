@@ -1,5 +1,5 @@
 //components
-
+import ImageComponent from "@/components/imageComponent";
 import CarouselItemOnVideo from "@/components/carouselOnVideoItem";
 import Layout from "@/components/layout";
 import Video from "@/components/videoComponent";
@@ -21,7 +21,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 //Swiper
 import "swiper/css";
-
 SwiperCore.use([Autoplay]);
 
 //variables
@@ -65,32 +64,17 @@ const servicesItem = [
 const newsItem = [
   {
     title: "home.news.title-1",
-    text: "home.news.text-1",
-    buttonHref: "/",
+    buttonHref: "#",
     imgSrc: "/images/emptyImage.jpg",
   },
   {
     title: "home.news.title-2",
-    text: "home.news.text-2",
-    buttonHref: "/",
+    buttonHref: "#",
     imgSrc: "/images/emptyImage.jpg",
   },
   {
     title: "home.news.title-3",
-    text: "home.news.text-3",
-    buttonHref: "/",
-    imgSrc: "/images/emptyImage.jpg",
-  },
-  {
-    title: "home.news.title-3",
-    text: "home.news.text-3",
-    buttonHref: "/",
-    imgSrc: "/images/emptyImage.jpg",
-  },
-  {
-    title: "home.news.title-3",
-    text: "home.news.text-3",
-    buttonHref: "/",
+    buttonHref: "#",
     imgSrc: "/images/emptyImage.jpg",
   },
 ];
@@ -163,27 +147,35 @@ export default function Home() {
         </div>
         <div className="flex w-full flex-col-reverse tablet:flex-row tablet:space-x-2 p-4">
           <div className="flex w-full tablet:w-[50%] p-4">
-            <div className="flex w-full items-center justify-center flex-col space-y-4">
-              <h3 className="w-full text-center text-error font-bold text-h4">
+            <div className="flex w-full items-center justify-center flex-col space-y-6">
+              <h3 className="w-full text-center uppercase text-error font-bold text-h4">
                 {intl.formatMessage({ id: "home.corporate-title" })}
               </h3>
-              <span className="text-title-small w-full text-center font-medium break-words">
+              <span className="text-title-small w-full text-center font-medium break-words max-w-[600px]">
                 {intl.formatMessage({ id: "home.corporate-text" })}
               </span>
               <Link href={"/corporate"}>
                 <Button
-                  text={intl.formatMessage({ id: "home.corporate-more" })}
+                  text={intl.formatMessage({ id: "home.more-information" })}
                 />
               </Link>
             </div>
           </div>
           <div className="flex w-full justify-center items-center tablet:w-[50%] bg-gradient-to-tr from-primary-main via-primary-mid to-primary-main p-10 rounded-lg">
-            <div className="flex mix-blend shadow-md shadow-warning items-center justify-center bg-gray-200 rounded-lg p-5">
-              <span className="text-h4 ">LOGO AREA</span>
+            <div className="flex items-center justify-center bg-gray-25 rounded-lg p-5">
+              <div className="flex relative w-full h-full p-12 rounded-lg overflow-hidden  group-hover:border-warning duration-300">
+                <ImageComponent
+                  src={"/images/logo.svg"}
+                  alt="News image"
+                  width={540}
+                  height={150}
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex w-full flex-col px-4 py-8 bg-primary-main">
+        <div className="flex w-full flex-col px-4 py-8 border-t border-primary-main">
           <h3 className="text-h3 text-center text-error uppercase font-bold">
             {intl.formatMessage({ id: "home.news" })}
           </h3>
@@ -211,7 +203,7 @@ export default function Home() {
           </motion.div>
           <div className="flex w-full justify-center mt-12">
             {newsItem?.length > 2 && (
-              <Link href={"/answer"}>
+              <Link href={"/solutions"}>
                 <Button
                   icon={faAnglesRight}
                   buttonType="secondary"

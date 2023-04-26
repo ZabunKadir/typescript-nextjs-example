@@ -49,20 +49,16 @@ const productItems = {
     },
     {
       title: "products.antennas-item-title-2",
-      text: [
-        "products.antennas-item-text-4",
-        "products.antennas-item-text-5",
-        "products.antennas-item-text-6",
-      ],
+      text: ["products.antennas-item-text-4", "products.antennas-item-text-5"],
       itemImage: null,
       href: "/",
     },
     {
       title: "products.antennas-item-title-3",
       text: [
+        "products.antennas-item-text-6",
         "products.antennas-item-text-7",
         "products.antennas-item-text-8",
-        "products.antennas-item-text-9",
       ],
       itemImage: null,
       href: "/",
@@ -76,16 +72,16 @@ const productItems = {
     {
       title: "products.antennas-item-title-5",
       text: [
+        "products.antennas-item-text-9",
         "products.antennas-item-text-10",
         "products.antennas-item-text-11",
-        "products.antennas-item-text-12",
       ],
       itemImage: null,
       href: "/",
     },
     {
       title: "products.antennas-item-title-6",
-      text: ["products.antennas-item-text-13"],
+      text: ["products.antennas-item-text-12"],
       itemImage: null,
       href: "/",
     },
@@ -114,14 +110,7 @@ const productItems = {
       href: "/",
     },
   ],
-  filters: [
-    {
-      title: "products.filters-item-title-1",
-      text: [],
-      itemImage: null,
-      href: "/",
-    },
-  ],
+  filters: [],
 };
 
 //framer motion config
@@ -196,7 +185,11 @@ export default function ProductsItem({ slug }: Props) {
     }
 
     return items.map((i, index) => (
-      <motion.div key={index} variants={item}>
+      <motion.div
+        className="flex w-full mobile:w-[320px]"
+        key={index}
+        variants={item}
+      >
         <ProductItem
           title={i.title}
           text={i.text}

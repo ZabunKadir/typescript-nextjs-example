@@ -74,7 +74,7 @@ const CorporatePage = () => {
 
   return (
     <Layout>
-      <div className="flex w-full flex-col justify-center items-center tablet:items-start tablet:flex-row p-12 min-h-[400px] space-x-6">
+      <div className="flex w-full flex-col justify-between items-center tablet:items-start tablet:flex-row p-12 laptop:px-52 min-h-[400px] space-x-6">
         <NavbarInPage
           title={intl.formatMessage({ id: "corporate.title" })}
           items={navbarItems}
@@ -87,16 +87,16 @@ const CorporatePage = () => {
             activePage === item.pageValue && (
               <div key={index} className="flex flex-col w-full space-y-4">
                 <h3 className="text-h4 border-b border-gray-400 pb-2">
-                  {item.text}
+                  {intl.formatMessage({ id: item.text })}
                 </h3>
-                <div className="flex flex-col w-full space-y-6 laptop:space-y-0 laptop:space-x-6 laptop:flex-row">
+                <div className="flex flex-col w-full space-y-6 laptop:space-y-0 laptop:space-x-6 desktop:flex-row">
                   <p className="flex w-full break-words">{item.info}</p>
                   <div className="flex min-w-max items-center justify-center relative overflow-hidden ">
                     <ImageComponent
                       src={item.image ? item.image : "/images/emptyImage.jpg"}
                       className=" max-w-[320px] h-[240px] border border-gray-400 rounded-lg"
                       width={320}
-                      height={240}
+                      height={196}
                       alt="Corporate image"
                     />
                   </div>

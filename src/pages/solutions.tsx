@@ -7,17 +7,17 @@ import { motion } from "framer-motion";
 import { useIntl } from "react-intl";
 
 //variables
-const answerItems = [
+const solutionItems = [
   {
-    title: "answers.title-1",
+    title: "solutions.title-1",
     imgSrc: "/images/emptyImage.jpg",
   },
   {
-    title: "answers.title-2",
+    title: "solutions.title-2",
     imgSrc: "/images/emptyImage.jpg",
   },
   {
-    title: "answers.title-3",
+    title: "solutions.title-3",
     imgSrc: "/images/emptyImage.jpg",
   },
 ];
@@ -42,7 +42,7 @@ const item = {
   },
 };
 
-const AnswersPage = () => {
+const SolutionsPage = () => {
   const intl = useIntl();
   return (
     <Layout>
@@ -54,7 +54,7 @@ const AnswersPage = () => {
             animate="visible"
             className="flex flex-col justify-center w-full items-center space-y-6 tablet:flex-row tablet:flex-wrap tablet:gap-4 tablet:justify-between desktop:gap-0 desktop:justify-around tablet:space-y-0 mt-4"
           >
-            {answerItems.map((i, index) => (
+            {solutionItems.map((i, index) => (
               <motion.div
                 className="flex justify-center items-center w-full tablet:w-[320px]"
                 key={index}
@@ -69,4 +69,4 @@ const AnswersPage = () => {
     </Layout>
   );
 };
-export default AnswersPage;
+export default SolutionsPage;

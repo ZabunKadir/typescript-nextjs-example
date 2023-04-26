@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import classNames from "classnames";
 import ImageComponent from "../imageComponent";
-import useDropdownMenuScroll from "../dropdownController";
 
 const LanguageSwitcher = ({
   additionalClass = "",

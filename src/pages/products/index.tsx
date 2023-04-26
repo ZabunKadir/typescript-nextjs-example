@@ -98,13 +98,12 @@ const ProductsPage = () => {
           className="flex w-full py-6 flex-wrap gap-6 justify-center items-center mobile:justify-between tablet:justify-start tablet:p-4 tablet:pt-0"
         >
           {products.map((i, index) => (
-            <motion.div key={index} variants={item}>
-              <NewsItem
-                title={i.text}
-                text="Deneme"
-                imgSrc={i.image}
-                buttonHref={i.href}
-              />
+            <motion.div
+              className="flex w-full mobile:w-[320px]"
+              key={index}
+              variants={item}
+            >
+              <NewsItem title={i.text} imgSrc={i.image} buttonHref={i.href} />
             </motion.div>
           ))}
         </motion.div>

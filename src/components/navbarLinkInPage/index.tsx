@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
 import { motion } from "framer-motion";
+import { useIntl } from "react-intl";
+
 //framer motion config
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -40,6 +42,7 @@ interface INavbarLinkInPage {
 const NavbarLinkInPage: FC<INavbarLinkInPage> = ({ title, items }) => {
   const [isOpen, setIsOpen] = useState(true);
   const router = useRouter();
+  const intl = useIntl();
 
   return (
     <motion.div
@@ -50,7 +53,7 @@ const NavbarLinkInPage: FC<INavbarLinkInPage> = ({ title, items }) => {
     >
       <div className="flex w-full px-4 items-center">
         <span className="w-full text-title-medium font-bold p-4 text-center text-primary-main">
-          {title}
+          {intl.formatMessage({ id: title })}
         </span>
         <button
           className="flex justify-center items-center w-10 h-10 tablet:w-8 tablet:h-8 hover:bg-primary-main rounded-lg group"
@@ -70,14 +73,16 @@ const NavbarLinkInPage: FC<INavbarLinkInPage> = ({ title, items }) => {
               href={item.href}
               key={index}
               className={classNames(
-                "flex items-center justify-center w-full p-4 border-t border-gray-400 duration-300 text-gray-800",
+                "flex items-center w-full p-4 border-t border-gray-400 duration-300 text-gray-800",
                 router.asPath === item.href
                   ? "bg-warning text-primary-main"
                   : "hover:bg-primary-main hover:text-white"
               )}
             >
               <FontAwesomeIcon icon={faChevronRight} className="mr-2" />
-              <span className="text-title-small font-medium">{item.text}</span>
+              <span className="text-title-small font-medium">
+                {intl.formatMessage({ id: item.text })}
+              </span>
             </Link>
           </motion.div>
         ))}

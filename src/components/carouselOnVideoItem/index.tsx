@@ -27,7 +27,7 @@ const CarouselItemOnVideo = ({
     <div
       className={`flex w-full h-full justify-center items-center ${className}`}
     >
-      <div className="w-full max-w-max flex flex-col items-center justify-center space-y-6 rounded-xl p-4 bg-gray-600 bg-opacity-30">
+      <div className="w-full max-w-max flex flex-col items-center justify-center space-y-6 rounded-xl p-4 bg-primary-mid bg-opacity-80">
         <span className="text-h2 text-white w-max items-center text-center px-4 font-bold break-words">
           {intl.formatMessage({ id: title })}
         </span>
@@ -36,6 +36,7 @@ const CarouselItemOnVideo = ({
         </span>
         <Button
           icon={faCircleInfo}
+          buttonType="secondary"
           text={intl.formatMessage({ id: buttonText })}
           onClick={() => router.push(buttonHref)}
         />

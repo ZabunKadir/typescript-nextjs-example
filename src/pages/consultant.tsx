@@ -10,20 +10,14 @@ import { useIntl } from "react-intl";
 const consultantItems = [
   {
     title: "consultant.title-1",
-    text: "consultant.text-1",
-
     imgSrc: "/images/emptyImage.jpg",
   },
   {
     title: "consultant.title-2",
-    text: "consultant.text-2",
-
     imgSrc: "/images/emptyImage.jpg",
   },
   {
     title: "consultant.title-3",
-    text: "consultant.text-3",
-
     imgSrc: "/images/emptyImage.jpg",
   },
 ];
