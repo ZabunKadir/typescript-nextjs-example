@@ -52,7 +52,7 @@ const HeaderComponent: FC<IHeader> = ({
               href={"/"}
             >
               <ImageComponent
-                src="/images/logo.svg"
+                src="/images/logo.png"
                 width={156}
                 height={96}
                 alt="Logo"

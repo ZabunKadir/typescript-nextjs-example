@@ -165,7 +165,7 @@ export default function Home() {
             <div className="flex items-center justify-center bg-gray-25 rounded-lg p-5">
               <div className="flex relative w-full h-full p-12 rounded-lg overflow-hidden  group-hover:border-warning duration-300">
                 <ImageComponent
-                  src={"/images/logo.svg"}
+                  src={"/images/logo.png"}
                   alt="News image"
                   width={540}
                   height={150}
