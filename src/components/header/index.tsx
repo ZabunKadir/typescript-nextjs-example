@@ -24,11 +24,11 @@ interface IHeader {
 
 const navItems = [
   { text: "header.links-1", icon: faHouse, href: "/" },
-  { text: "header.links-2", icon: null, href: "/about" },
-  { text: "header.links-3", icon: null, href: "/contact" },
-  { text: "header.links-4", icon: null, href: "/contact" },
-  { text: "header.links-5", icon: null, href: "/contact" },
-  { text: "header.links-6", icon: null, href: "/contact" },
+  { text: "header.links-2", icon: null, href: "/corporate" },
+  { text: "header.links-3", icon: null, href: "/products" },
+  { text: "header.links-4", icon: null, href: "/defense-industry-products" },
+  { text: "header.links-5", icon: null, href: "/consultant" },
+  { text: "header.links-6", icon: null, href: "/answers" },
   { text: "header.links-7", icon: null, href: "/contact" },
 ];
 

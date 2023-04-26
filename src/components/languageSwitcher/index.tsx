@@ -18,13 +18,13 @@ const LanguageSwitcher = ({
     {
       label: "TR",
       value: "tr",
-      iconSrc: "./images/trFlag.svg",
+      iconSrc: "/images/trFlag.svg",
       iconAlt: "Turkey flag",
     },
     {
       label: "EN",
       value: "en",
-      iconSrc: "./images/enFlag.svg",
+      iconSrc: "/images/enFlag.svg",
       iconAlt: "England flag",
     },
   ];
@@ -42,8 +42,8 @@ const LanguageSwitcher = ({
             alt={"Flags picker"}
             src={
               router.locale === "en"
-                ? "./images/enFlag.svg"
-                : "./images/trFlag.svg"
+                ? "/images/enFlag.svg"
+                : "/images/trFlag.svg"
             }
           />
           <span className=" text-normal">{router.locale?.toUpperCase()}</span>
@@ -69,6 +69,8 @@ const LanguageSwitcher = ({
               >
                 <img
                   className="w-6 h-6"
+                  width={"auto"}
+                  height={"auto"}
                   src={item.iconSrc}
                   alt={item.iconAlt}
                 />

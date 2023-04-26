@@ -14,13 +14,12 @@
   "footer.title-3": "Hizmetleriniz",
   "footer.title-4": "İletişim",
   "footer.purpose-1": "Müşteri memnuniyeti odaklı bir anlayış içinde olan firmamız; Satış, muhasebe, satınalma ve sevkiyat kadrosuyla her geçen gün büyük bir müşteri desteğini de arkasına alarak, büyük bir hassasiyetle bayilerine hizmet vermeye devam etmektedir.",
-  "footer.link-1": "Hakkımızda",
-  "footer.link-2": "Misyonumuz",
-  "footer.link-3": "Vizyonumuz",
-  "footer.link-4": "Kalite Politikamız",
-  "footer.link-5": "Ürünlerimiz",
-  "footer.link-6": "Savunma Sanayi Ürünleriniz",
-  "footer.link-7": "Danışmanlık ve Eğitim",
-  "footer.link-8": "Çözümler",
-  "home.more-information": "Detaylı Bilgi"
+  "footer.link-1": "Ürünler",
+  "footer.link-2": "Savunma Sanayi Ürünleri",
+  "footer.link-3": "Danışmanlık Ve Eğitim",
+  "footer.link-4": "Çözümler",
+  "home.more-information": "Detaylı Bilgi",
+  "home.show-more": "Daha Fazla Göster",
+  "404.not-found": "Sayfa Bulunamadı",
+  "404.go-home": "Ana Sayfa"
 }

@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 interface IButtonProps {
   text: string;
-  type?: string;
+  type?: "submit" | "button" | "reset";
   buttonType?: string;
   icon?: IconProp;
   onClick?: () => void;
@@ -25,16 +25,22 @@ const Button = ({
       initial={{ opacity: 1 }}
       whileTap={{ scale: 0.9 }}
       whileInView={{ opacity: 1 }}
-      type="button"
+      type={type}
       className={classNames(
-        `flex justify-center items-center text-white font-semibold py-2 px-4 rounded-lg text-title-small duration-300 max-h-[44px] w-max ${className}`,
+        "flex justify-center items-center text-white font-semibold py-2 px-4 rounded-lg text-title-small duration-300 max-h-[44px] min-w-max",
+        className,
         buttonType === "primary" && "bg-primary-main hover:bg-primary-mid",
-        buttonType === "secondary" && " bg-warning hover:bg-orange-mid"
+        buttonType === "secondary" &&
+          " bg-warning hover:bg-orange-mid text-primary-mid"
       )}
       onClick={onClick}
     >
       {icon && <FontAwesomeIcon icon={icon} className="mr-2" />}
-      {text}
+      <span
+        className={classNames(buttonType === "secondary" && "text-primary-mid")}
+      >
+        {text}
+      </span>
     </motion.button>
   );
 };

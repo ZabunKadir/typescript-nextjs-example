@@ -10,15 +10,18 @@ import {
   faShieldHalved,
   faUserDoctor,
   faChartLine,
+  faAnglesRight,
 } from "@fortawesome/free-solid-svg-icons";
-//Swiper
-import "swiper/css";
 import { useIntl } from "react-intl";
 import ServicesItem from "@/components/servicesItem";
 import Button from "@/components/button";
 import Link from "next/link";
-import ImageComponent from "@/components/imageComponent";
 import NewsItem from "@/components/newsItem";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+//Swiper
+import "swiper/css";
+
 SwiperCore.use([Autoplay]);
 
 //variables
@@ -64,19 +67,58 @@ const newsItem = [
     title: "home.news.title-1",
     text: "home.news.text-1",
     buttonHref: "/",
-    imgSrc: "./images/",
+    imgSrc: "/images/emptyImage.jpg",
   },
   {
-    title: "home.services.title-2",
-    text: "home.services.text-2",
+    title: "home.news.title-2",
+    text: "home.news.text-2",
+    buttonHref: "/",
+    imgSrc: "/images/emptyImage.jpg",
   },
   {
-    title: "home.services.title-3",
-    text: "home.services.text-3",
+    title: "home.news.title-3",
+    text: "home.news.text-3",
+    buttonHref: "/",
+    imgSrc: "/images/emptyImage.jpg",
+  },
+  {
+    title: "home.news.title-3",
+    text: "home.news.text-3",
+    buttonHref: "/",
+    imgSrc: "/images/emptyImage.jpg",
+  },
+  {
+    title: "home.news.title-3",
+    text: "home.news.text-3",
+    buttonHref: "/",
+    imgSrc: "/images/emptyImage.jpg",
   },
 ];
+//framer motion config
+const containerMotion = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemMotion = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
 export default function Home() {
   const intl = useIntl();
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1], [0, 1]);
+
   return (
     <Layout>
       <div className="flex w-full flex-col space-y-6">
@@ -141,11 +183,43 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex w-full flex-col">
-          <h3>{intl.formatMessage({ id: "home.news" })}</h3>
-          {/* {newsItem.map((item, index) => (
-            <NewsItem key={index} {...item} />
-          ))} */}
+        <div className="flex w-full flex-col px-4 py-8 bg-primary-main">
+          <h3 className="text-h3 text-center text-error uppercase font-bold">
+            {intl.formatMessage({ id: "home.news" })}
+          </h3>
+          <motion.div
+            variants={containerMotion}
+            initial="hidden"
+            animate="visible"
+            style={{
+              y,
+            }}
+            className="flex flex-col justify-center w-full items-center space-y-6 tablet:flex-row tablet:flex-wrap tablet:gap-4 tablet:justify-between desktop:gap-0 desktop:justify-around tablet:space-y-0 mt-4"
+          >
+            {newsItem.map(
+              (item, index) =>
+                index <= 2 && (
+                  <motion.div
+                    className="flex w-full mobile:w-[320px]"
+                    variants={itemMotion}
+                    key={index}
+                  >
+                    <NewsItem {...item} />
+                  </motion.div>
+                )
+            )}
+          </motion.div>
+          <div className="flex w-full justify-center mt-12">
+            {newsItem?.length > 2 && (
+              <Link href={"/answer"}>
+                <Button
+                  icon={faAnglesRight}
+                  buttonType="secondary"
+                  text={intl.formatMessage({ id: "home.show-more" })}
+                />
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </Layout>

@@ -59,5 +59,5 @@ module.exports = {
       footnote: ["10px"],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
